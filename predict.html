@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crop Recommendation</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+        }
+            /* Style for the page header */
+            h1 {
+              font-size: 2.5rem;
+              text-align: center;
+              margin-top: 2rem;
+            }
+        
+        .nextpage{
+            text-align: center;
+            padding: 3%;
+        }
+        
+        .nextpage a{
+            margin-left: 1%;
+        }
+        
+
+            /* Style for the label elements */
+            label {
+              margin-left: 35%;
+              font-size: 1.2rem;
+              display: inline-block;
+              width: 8rem;
+              margin-top: 1rem;
+            }
+
+            /* Style for the select elements */
+            select {
+              font-size: 1rem;
+              padding: 0.5rem;
+              margin-top: 1rem;
+              margin-bottom: 1rem;
+              border-radius: 0.2rem;
+              border: 1px solid #ccc;
+              width: 15rem;
+            }
+
+            input[type="text"]{
+                        padding: 10px;
+                        width: 15%;
+                        margin-bottom: 10px;
+            }
+
+            /* Style for the button element */
+            button {
+              margin-left: 43%;
+              background-color: #4CAF50;
+              border: none;
+              color: white;
+              padding: 0.8rem;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 1.2rem;
+              margin-top: 1rem;
+              margin-bottom: 1rem;
+              border-radius: 0.2rem;
+              cursor: pointer;
+            }
+
+            /* Style for the paragraph element */
+            p {
+              font-size: 1.2rem;
+              margin-top: 1rem;
+              margin-bottom: 1rem;
+              text-align: center;
+            }
+    </style>
+</head>
+<body>
+	<h1>Crop Recommendation</h1>
+    <h3 class="nextpage">Crop Recommendation based on Previous Year Production<a href="previous_production.html" target="_blank">Click Here</a></h3>
+	<p>Select your state and soil type to get a crop recommendation:</p>
+	<label for="state">State:</label>
+	<select id="state">
+		<option value="Andhra Pradesh">Andhra Pradesh</option>
+		<option value="Tamil Nadu">Tamil Nadu</option>
+		<option value="Karnataka">Karnataka</option>
+        <option value="Gujarat">Gujarat</option>
+        <option value="Punjab">Punjab</option>
+        <option value="Haryana">Haryana</option>
+        <option value="Uttar Pradesh">Uttar Pradesh</option>
+	</select>
+	<br>
+	<label for="soil-type">Soil Type:</label>
+	<select id="soil-type">
+		<option value="Red Soil">Red Soil</option>
+		<option value="Black Soil">Black Soil</option>
+		<option value="Alluvial Soil">Alluvial Soil</option>
+		<option value="Red and Black Soil">Red and Black Soil</option>
+		<option value="Sandy Soil">Sandy Soil</option>
+		<option value="Clayey Soil">Clayey Soil</option>
+	</select>
+	<br>
+    <label for="soil-ph">Soil pH:</label>
+    <input type="text" id="soil-ph" placeholder="Enter soil pH value">
+	<button onclick="recommendCrop()">Recommend Crop</button>
+	<p id="result"></p>
+    <p id="min-ph"></p>
+    <p id="max-ph"></p>
+    <p id="alt-crop-result"></p>
+    <p id="alt-min-ph"></p>
+    <p id="alt-max-ph"></p>
+</body>
+    <script>
+    function recommendCrop() {
+			// Get user input values
+			var state = document.getElementById("state").value;
+			var soilType = document.getElementById("soil-type").value;
+
+			// Define crop recommendations based on state and soil type
+			var crop, minPH, maxPH;
+			switch(state) {
+				case "Andhra Pradesh":
+					if (soilType === "Red Soil") {
+						crop = "Cotton";
+                        minPH = 6.0;
+					    maxPH = 7.5;
+					} else if (soilType === "Black Soil") {
+						crop = "Tobacco";
+                        minPH = 5.5;
+					    maxPH = 7.0;
+					} else {
+						crop = "Rice";
+                        minPH = 5.0;
+					    maxPH = 6.5;
+					}
+					break;
+				case "Gujarat":
+					if (soilType === "Alluvial Soil") {
+						crop = "Cotton";
+                        minPH = 6.0;
+					    maxPH = 7.5;
+					} else if (soilType === "Red and Black Soil") {
+						crop = "Groundnut";
+                        minPH = 6.0;
+					    maxPH = 7.0;
+					} else {
+						crop = "Castor";
+                        minPH = 6.0;
+					    maxPH = 7.0;
+					}
+					break;
+				case "Punjab":
+					if (soilType === "Sandy Soil") {
+						crop = "Wheat";
+                        minPH = 6.0;
+					    maxPH = 7.5;
+					} else if (soilType === "Clayey Soil") {
+						crop = "Rice";
+                        minPH = 5.0;
+					maxPH = 6.5;
+					} else {
+						crop = "Maize";
+                        minPH = 5.5;
+					    maxPH = 7.0;
+					}
+					break;
+                    case "Karnataka":
+              if (soilType === "Red Soil") {
+                crop = "Cotton";
+                minPH = 6.0;
+                maxPH = 7.5;
+              } else if (soilType === "Black Soil") {
+                crop = "Sugarcane";
+                minPH = 6.5;
+                maxPH = 8.5;
+              } else {
+                crop = "Maize";
+                minPH = 5.0;
+                maxPH = 6.5;
+              }
+              break;
+
+            case "Tamil Nadu":
+              if (soilType === "Red Soil") {
+                crop = "Groundnut";
+                minPH = 6.0;
+                maxPH = 7.0;
+              } else if (soilType === "Black Soil") {
+                crop = "Cotton";
+                minPH = 6.5;
+                maxPH = 8.0;
+              } else {
+                crop = "Wheat";
+                minPH = 6.0;
+                maxPH = 7.5;
+              }
+              break;
+             case "Haryana":
+                if (soilType === "Alluvial Soil") {
+                  crop = "Rice";
+                  minPH = 6.0;
+                  maxPH = 7.5;
+                } else if (soilType === "Red and Black Soil") {
+                  crop = "Sugarcane";
+                  minPH = 6.0;
+                  maxPH = 7.0;
+                } else {
+                  crop = "Wheat";
+                  minPH = 6.0;
+                  maxPH = 7.0;
+                }
+                break;
+              case "Uttar Pradesh":
+                if (soilType === "Alluvial Soil") {
+                  crop = "Rice";
+                  minPH = 6.0;
+                  maxPH = 7.5;
+                } else if (soilType === "Red and Black Soil") {
+                  crop = "Sugarcane";
+                  minPH = 6.0;
+                  maxPH = 7.0;
+                } else {
+                  crop = "Wheat";
+                  minPH = 6.0;
+                  maxPH = 7.0;
+                }
+                break;
+				default:
+					crop = "No crop recommendation available for this state and soil type.";
+			}
+
+			// Display crop recommendation to user
+			document.getElementById("result").innerHTML = "Recommended crop: " + crop;
+            document.getElementById("min-ph").innerHTML = "Minimum pH value for " + crop + ": " + minPH;
+		document.getElementById("max-ph").innerHTML = "Maximum pH value for " + crop + ": " + maxPH;
+            var soilPH = document.getElementById("soil-ph").value;
+		if (soilPH < minPH || soilPH > maxPH) {
+			// pH values are not optimal for recommended crop, provide an alternative recommendation
+			switch(crop) {
+				case "Cotton":
+					crop = "Sugarcane";
+					minPH = 6.0;
+					maxPH = 8.0;
+					break;
+				case "Tobacco":
+					crop = "Potato";
+					minPH = 4.5;
+					maxPH = 6.0;
+					break;
+				default:
+					crop = "No alternative crop recommendation available.";
+					minPH = "N/A";
+					maxPH = "N/A";
+			}
+			document.getElementById("alt-crop-result").innerHTML = "Alternative crop recommendation: " + crop;
+			document.getElementById("alt-min-ph").innerHTML = "Minimum pH value for " + crop + ": " + minPH;
+            document.getElementById("alt-max-ph").innerHTML = "Minimum pH value for " + crop + ": " + maxPH;
+          }
+}   
+    </script>
+</html>
+
+
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Best Crop Predictor</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.13.0"></script>
+    <script>
+        // Paste your JavaScript code here
+    </script>
+</head>
+<body>
+    <h1>Best Crop Predictor</h1>
+    <form>
+        <label for="state">State:</label>
+        <select id="state">
+		<option value="Andhra Pradesh">Andhra Pradesh</option>
+		<option value="Gujarat">Gujarat</option>
+		<option value="Punjab">Punjab</option>
+	</select><br><br>
+
+        <label for="soil-type">Soil Type:</label>
+        <select id="soil-type">
+		<option value="Red Soil">Red Soil</option>
+		<option value="Black Soil">Black Soil</option>
+		<option value="Alluvial Soil">Alluvial Soil</option>
+		<option value="Red and Black Soil">Red and Black Soil</option>
+		<option value="Sandy Soil">Sandy Soil</option>
+		<option value="Clayey Soil">Clayey Soil</option>
+	</select><br><br>
+
+        <label for="soil-ph">Soil pH:</label>
+        <input type="number" id="soil-ph" name="soil-ph" step="0.01"><br><br>
+
+        <label for="season">Season:</label>
+        <select id="season" name="season">
+            <option value="Kharif">Kharif</option>
+            <option value="Rabi">Rabi</option>
+            <option value="Summer">Summer</option>
+        </select><br><br>
+
+        <label for="rainfall">Rainfall (mm):</label>
+        <input type="number" id="rainfall" name="rainfall"><br><br>
+
+        <input type="button" value="Predict Best Crop" onclick="predictCrop()">
+    </form>
+    <br>
+    <p id="result"></p>
+</body>
+<script src="script.js"></script>
+</html>-->

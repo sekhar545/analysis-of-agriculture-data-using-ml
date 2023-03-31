@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crop Recommendation-Previous Production</title>
+    <!--
+	<script>
+		function recommendCrop() {
+  // Get the previous year's production and profit data
+  var previousProduction = parseFloat(document.getElementById("previousProduction").value);
+  var previousProfit = parseFloat(document.getElementById("previousProfit").value);
+
+  // Calculate the average profit per unit of production
+  var profitPerUnit = previousProfit / previousProduction;
+
+  // Define crop options and corresponding profit per unit thresholds
+  var cropOptions = [
+    { name: "Corn", threshold: 2 },
+    { name: "Wheat", threshold: 1.5 },
+    { name: "Soybeans", threshold: 1 },
+    { name: "Rice", threshold: 1.2 },
+    { name: "Cotton", threshold: 1.8 },
+    { name: "Sunflower", threshold: 1.6 },
+    { name: "Sugar beet", threshold: 1.1 },
+    { name: "Potato", threshold: 1.3 },
+    { name: "Onion", threshold: 1.4 },
+  ];
+
+  // Filter crop options based on profit per unit threshold
+  var feasibleCrops = cropOptions.filter(function(crop) {
+    return profitPerUnit > crop.threshold;
+  });
+
+  // Randomly select a feasible crop
+  var recommendedCrop = feasibleCrops[Math.floor(Math.random() * feasibleCrops.length)].name;
+
+  // Display the recommended crop
+  document.getElementById("recommendedCrop").innerHTML = "Based on your previous year's production and profit, we recommend planting " + recommendedCrop + " for the next season.";
+}
+	</script>-->
+    
+    
+    <style>
+        body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	text-align: center;
+	margin-top: 20px;
+}
+
+p {
+    text-align: center;
+	margin: 10px 0;
+    margin-top: 4%;
+}
+
+label {
+    margin-top: 3%;
+    margin-left: 37%; 
+	display: inline-block;
+	width: 200px;
+}
+
+select {
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+button {
+    margin-left: 42%;
+	background-color: #4CAF50;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #3E8E41;
+}
+
+#recommendedCrop {
+	margin-top: 20px;
+	font-weight: bold;
+    text-align: center;
+}
+
+    </style>
+<!--
+</head>
+<body>
+	<h1>Crop Recommendation</h1>
+	<p>Select your previous year's production and profit data:</p>
+	<label for="previousProduction">Previous Production (in tons):</label>
+	<select id="previousProduction">
+		<option value="50">50</option>
+		<option value="100">100</option>
+		<option value="150">150</option>
+		<option value="200">200</option>
+	</select><br><br>
+	<label for="previousProfit">Previous Profit (in rupees):</label>
+<select id="previousProfit">
+	<option value="500000">5,00,000 Rs</option>
+	<option value="1000000">10,00,000 Rs</option>
+	<option value="1500000">15,00,000 Rs</option>
+	<option value="2000000">20,00,000 Rs</option>
+</select><br><br>
+	<button onclick="recommendCrop()">Recommend Crop</button><br><br>
+	<div id="recommendedCrop"></div>
+</body>
+</html>
+-->
+    
+    	<script>
+		function recommendCrop() {
+			// Get the previous year's production and profit data
+			var previousCrop = document.getElementById("previousCrop").value;
+			var previousProduction = parseFloat(document.getElementById("previousProduction").value);
+			var previousProfit = parseFloat(document.getElementById("previousProfit").value);
+
+			// Calculate the average profit per unit of production
+			var profitPerUnit = previousProfit / previousProduction;
+
+			// Define crop options and corresponding profit per unit thresholds
+			var cropOptions = [
+				{ name: "Corn", threshold: 2 },
+				{ name: "Wheat", threshold: 1.5 },
+				{ name: "Soybeans", threshold: 1 },
+				{ name: "Rice", threshold: 1.2 },
+				{ name: "Cotton", threshold: 1.8 },
+				{ name: "Sunflower", threshold: 1.6 },
+				{ name: "Sugar beet", threshold: 1.1 },
+				{ name: "Potato", threshold: 1.3 },
+				{ name: "Onion", threshold: 1.4 },
+			];
+
+			// Filter crop options based on profit per unit threshold
+			var feasibleCrops = cropOptions.filter(function(crop) {
+				return profitPerUnit > crop.threshold;
+			});
+
+			// Randomly select a feasible crop
+			var recommendedCrop = feasibleCrops[Math.floor(Math.random() * feasibleCrops.length)].name;
+
+			// Display the recommended crop
+			document.getElementById("recommendedCrop").innerHTML = "Based on your previous year's production and profit with " + previousCrop + ", we recommend planting " + recommendedCrop + " for the next season.";
+		}
+	</script>
+</head>
+<body>
+	<h1>Crop Recommendation based on Previous Production</h1>
+	<p>Enter your previous year's crop, production and profit data:</p>
+	<label for="previousCrop">Previous Crop:</label>
+	<select id="previousCrop">
+		<option value="Maize">Maize</option>
+		<option value="Wheat">Wheat</option>
+		<option value="Soybeans">Soybeans</option>
+		<option value="Rice">Rice</option>
+	</select><br><br>
+	<label for="previousProduction">Previous Production (in tons):</label>
+	<select id="previousProduction">
+		<option value="50">50</option>
+		<option value="100">100</option>
+		<option value="150">150</option>
+		<option value="200">200</option>
+	</select><br><br>
+	<label for="previousProfit">Previous Profit (in rupees):</label>
+	<select id="previousProfit">
+		<option value="5000">5000</option>
+		<option value="10000">10000</option>
+		<option value="15000">15000</option>
+		<option value="20000">20000</option>
+	</select><br><br>
+	<button onclick="recommendCrop()">Recommend Crop</button><br><br>
+	<div id="recommendedCrop"></div>
+</body>
+</html>

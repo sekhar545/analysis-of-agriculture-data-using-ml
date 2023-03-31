@@ -1,0 +1,12 @@
+state,soil_type,soil_ph,season,rainfall,crop
+Maharashtra,Red Soil,6.0,Kharif,600,Wheat
+Telangana,Black Soil,7.0,Rabi,700,Rice
+Punjab,Alluvial Soil,5.5,Kharif,800,Maize
+Uttar Pradesh,Red and Black Soil,6.5,Rabi,800,Sugarcane
+Gujarat,Alluvial Soil,6.2,Kharif,1200,Cotton
+Assam,Clayey Soil,5.8,Rabi,1600,Tea
+Karnataka,Sandy Soil,6.0,Kharif,1000,Coffee
+Kerala,Laterite Soil,5.5,Rabi,2000,Coconut
+Tamil Nadu,Red Loamy Soil,6.8,Kharif,1500,Rubber
+Andhra Pradesh,Red Sandy Loam Soil,6.2,Rabi,800,Spices
+Haryana,Alluvial Soil,6.5,Kharif,600,Vegetables
